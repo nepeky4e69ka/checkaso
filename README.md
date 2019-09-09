@@ -1,29 +1,19 @@
-# checkaso
+## beta.checkaso.io
 
-## Project setup
+####[Test](https://gitlab.com/mobilemediaruopensource/frontend-developer-test-2)ASO application 
+- Webp safari support
+- Lazyload
+- [Design](https://xd.adobe.com/spec/b7c9b49d-36fd-4683-45af-6a1ed0dcb7d1-c1f8/)
+- [Live example](https://checkaso.rsx.one/)
+
+##### setup
 ```
 npm install
 ```
 
-### Compiles and hot-reloads for development
+##### hot-reloads
 ```
 npm run serve
 ```
 
-### Compiles and minifies for production
-```
-npm run build
-```
 
-### Run your tests
-```
-npm run test
-```
-
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).

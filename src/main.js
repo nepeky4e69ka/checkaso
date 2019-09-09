@@ -1,8 +1,17 @@
-import Vue from 'vue'
-import App from './App.vue'
+import Vue          from 'vue'
+import App          from './App.vue'
+import router       from '@/router'
+import store        from '@/store/index'
+import * as helper  from '@/helper'
+import lazyImage    from '@/directives/lazyImage'
 
+
+Vue.directive("lazyImage", lazyImage);
 Vue.config.productionTip = false
+Vue.prototype.$H = helper
 
 new Vue({
-  render: h => h(App),
+    router,
+    store,
+    render: h => h(App),
 }).$mount('#app')
