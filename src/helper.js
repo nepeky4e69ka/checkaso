@@ -2,9 +2,11 @@
 
 import store from '@/store/index'
 import axios from 'axios';
-import { WebpMachine } from "webp-hero"
-const webpMachine = new WebpMachine();
-const cachedWEBPImages = [];
+
+// should be moved to sw for better performance
+import { WebpMachine }  from "webp-hero"
+const webpMachine       = new WebpMachine();
+const cachedWEBPImages  = [];
 
 // local storage use
 export const storage = ( action, name, obj ) => {
@@ -21,7 +23,6 @@ export const storage = ( action, name, obj ) => {
 export const setStates = ( params ) => {
     storage('set', 'states', Object.assign( params, store.state.states ));
 };
-
 // WEBP SAFARI SUPPORT & CACHING
 export const transformImages = async() => {
 
@@ -42,7 +43,7 @@ export const transformImages = async() => {
                 // prevent double request&decode
                 cachedWEBPImages.push({ link: links[ i ], data: base64url });
             }catch (e){
-                // set "no image"
+                // set "no image" here
                 window.console(e)
             }
         }

@@ -34,6 +34,8 @@
                     rating      = this.states.query.rating,
                     query       = Object.keys( this.states.query );
 
+                if( !this.tables[ table ] ) return this.$router.push({ name: 'welcome' });
+
                 if( query.length > 0 ) {
                     if(platform === 'all' ) apps = this.tables[ table ].applications.filter( a => parseFloat( a.rating ) >= rating );
                     else apps = this.tables[ table ].applications.filter( a => parseFloat( a.rating ) >= rating && a.platform === platform );
@@ -49,7 +51,7 @@
                 }
                 catch (error){
                     this.$store.commit('setError', error );
-                    this.$route.push({ name:'welcome', query:{ error:true } })
+                    this.$route.push({ name:'welcome', query:{ error:JSON.stringify( error ) } })
                 }
             }
         },
