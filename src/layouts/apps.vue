@@ -37,8 +37,10 @@
                 if( !this.tables[ table ] ) return this.$router.push({ name: 'welcome' });
 
                 if( query.length > 0 ) {
-                    if(platform === 'all' ) apps = this.tables[ table ].applications.filter( a => parseFloat( a.rating ) >= rating );
-                    else apps = this.tables[ table ].applications.filter( a => parseFloat( a.rating ) >= rating && a.platform === platform );
+                    if( platform === 'all' )
+                        apps = this.tables[ table ].applications.filter( a => parseFloat( a.rating ) >= rating );
+                    else
+                        apps = this.tables[ table ].applications.filter( a => parseFloat( a.rating ) >= rating && a.platform === platform );
                 }
                 else apps = this.tables[ table ].applications;
                 this.SET_APPLICATIONS( apps );
@@ -49,9 +51,9 @@
                 try {
                    await this.$H.transformImages()
                 }
-                catch (error){
+                catch ( error ){
                     this.$store.commit('setError', error );
-                    this.$route.push({ name:'welcome', query:{ error:JSON.stringify( error ) } })
+                    this.$route.push({ name:'welcome', query:{ error:true } })
                 }
             }
         },
