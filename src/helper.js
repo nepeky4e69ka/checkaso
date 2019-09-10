@@ -42,11 +42,14 @@ export const transformImages = async() => {
                 // prevent double request&decode
                 cachedWEBPImages.push({ link: links[ i ], data: base64url });
             }catch (e){
+                // set "no image"
                 window.console(e)
             }
         }
         images[ i ].parentNode.style = `background:url('${ base64url }')`;
     }
+    document.querySelector('.apps_container').classList.add('polyfill');
+
 };
 //
 export const roundToShort = ( value ) => { // not my

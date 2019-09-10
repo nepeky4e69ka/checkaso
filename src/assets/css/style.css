@@ -597,6 +597,9 @@ nav li{
     user-select: none; /* Non-prefixed version, currently
                                   supported by Chrome and Opera */
 }
+.polyfill .lds-spinner{
+    display: none;
+}
 
 
 
