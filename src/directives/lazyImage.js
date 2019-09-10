@@ -11,7 +11,7 @@ export default {
                     setTimeout(() => el.classList.add("loaded"), 100);
                 });
                 // set default "no image" on error
-                //imageElement.addEventListener("error", () => console.log("error"));
+                // imageElement.addEventListener("error", () => console.log("error"));
                 imageElement.src = imageElement.dataset.url;
             }
         }

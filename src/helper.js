@@ -1,10 +1,9 @@
 "use strict";
 
-import store from '@/store/index'
-import axios from 'axios';
-
-// should be moved to sw for better performance
+import store            from '@/store/index'
+import axios            from 'axios';
 import { WebpMachine }  from "webp-hero"
+// should be moved to sw for better performance
 const webpMachine       = new WebpMachine();
 const cachedWEBPImages  = [];
 
@@ -32,7 +31,7 @@ export const transformImages = async() => {
     for( let i = 0; i < links.length; i++){
 
         let base64url,
-            cachedIndex = cachedWEBPImages.findIndex(cache => cache.link === links[ i ]);
+            cachedIndex = cachedWEBPImages.findIndex( cache => cache.link === links[ i ] );
 
         if( cachedIndex > -1 ) base64url = cachedWEBPImages[ cachedIndex ].data;
         else {
@@ -44,7 +43,7 @@ export const transformImages = async() => {
                 cachedWEBPImages.push({ link: links[ i ], data: base64url });
             }catch (e){
                 // set "no image" here
-                window.console(e)
+                window.console(e);
             }
         }
         images[ i ].parentNode.style = `background:url('${ base64url }')`;

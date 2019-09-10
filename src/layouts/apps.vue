@@ -36,7 +36,7 @@
 
                 if( !this.tables[ table ] ) return this.$router.push({ name: 'welcome' });
 
-                if( query.length > 0 ) {
+                if( query.length ) {
                     if( platform === 'all' )
                         apps = this.tables[ table ].applications.filter( a => parseFloat( a.rating ) >= rating );
                     else
@@ -47,15 +47,9 @@
             }
         },
         async updated(){
-            if( navigator.vendor.toLowerCase().includes('apple') ) {
-                try {
-                   await this.$H.transformImages()
-                }
-                catch ( error ){
-                    this.$store.commit('setError', error );
-                    this.$route.push({ name:'welcome', query:{ error:true } })
-                }
-            }
+
+            if( navigator.vendor.toLowerCase().includes('apple') ) await this.$H.transformImages()
+
         },
         watch:{
             '$route'(){
