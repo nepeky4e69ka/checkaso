@@ -6,9 +6,6 @@ import { WebpMachine } from "webp-hero"
 const webpMachine = new WebpMachine();
 const cachedWEBPImages = [];
 
-// router beforeEnter to private area
-export const isAuthenticated = (to, from, next) => store.getters.isAuthenticated ? next() : next({ name:'auth' });
-
 // local storage use
 export const storage = ( action, name, obj ) => {
 
@@ -42,19 +39,14 @@ export const transformImages = async() => {
                 const { data } = await axios.get( links[ i ],{ responseType: 'arraybuffer'});
                 const buffer = new Uint8Array( data );
                 base64url = await webpMachine.decode( buffer );
-                // prevent multi request&decode
+                // prevent double request&decode
                 cachedWEBPImages.push({ link: links[ i ], data: base64url });
             }catch (e){
                 window.console(e)
             }
-
         }
         images[ i ].parentNode.style = `background:url('${ base64url }')`;
-        images[ i ].parentNode.classList.add('loaded');
     }
-
-    document.querySelector('.apps_container').classList.add('polyfill');
-
 };
 //
 export const roundToShort = ( value ) => { // not my

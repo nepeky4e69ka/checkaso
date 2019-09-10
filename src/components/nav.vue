@@ -24,6 +24,9 @@
         watch:{
             tables(){
                 this.$nextTick(() => this.setCurrent());
+            },
+            '$route'(){
+                this.$nextTick(() => this.setCurrent());
             }
         },
         methods:{
@@ -40,7 +43,7 @@
             },
             setCurrent(){
                 for (let [ key ] of Object.entries(this.tables)) {
-                    if( key === this.$route.params.app){
+                    if( key === this.$route.params.app ){
                         const index = Object.keys(this.tables).indexOf( key );
                         this.clickRoute( index );
                         break
