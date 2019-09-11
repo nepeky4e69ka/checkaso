@@ -37,8 +37,7 @@ export const transformImages = async() => {
         else {
             try {
                 const { data } = await axios.get( links[ i ],{ responseType: 'arraybuffer'});
-                const buffer = new Uint8Array( data );
-                base64url = await webpMachine.decode( buffer );
+                base64url = await webpMachine.decode( new Uint8Array( data ) );
                 // prevent double request&decode
                 cachedWEBPImages.push({ link: links[ i ], data: base64url });
             }catch (e){
@@ -56,7 +55,7 @@ export const roundToShort = ( value ) => { // not my
 
     let newValue = value;
     if (value >= 1000) {
-        let suffixes = ["", "K.", "M.", "B.","T."];
+        let suffixes = ["", "K.", "KK.", "B.","T."];
         let suffixNum = Math.floor( (value).length/3 );
         let shortValue = '';
         for ( let precision = 2; precision >= 1; precision-- ) {

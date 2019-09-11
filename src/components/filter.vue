@@ -40,17 +40,14 @@
         methods:{
             ...mapActions(['GET_APPS']),
             valueSelected( value ){
-                this.filterApps({ rating:value.option.value })
+                this.GET_APPS({ rating:value.option.value })
             },
             valuesSelected( selected ){
                 // sadness
                 const _platforms = this.platforms;
                 _platforms.map(( p,i ) => _platforms[i].selected = selected.includes( p.value ));
                 this.platforms = _platforms;
-                this.filterApps({ platform:selected })
-            },
-            filterApps(obj){
-                this.GET_APPS(obj)
+                this.GET_APPS({ platform:selected })
             }
         },
         mounted(){

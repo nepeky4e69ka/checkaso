@@ -14,7 +14,7 @@
     export default {
         name: 'checkASO',
         computed:{
-            ...mapGetters(['tables', 'states']),
+            ...mapGetters(['states']),
         },
         methods:{
             ...mapActions(['GET_APPS', 'RESTORE_STATES'])
